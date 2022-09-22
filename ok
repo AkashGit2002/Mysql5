@@ -1,0 +1,37 @@
+<?php
+
+ 
+
+ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['submit'])){
+
+	$conn=mysqli_connect('localhost','root','','test') or die("connection Failed:".mysqli_connect_error());
+	echo "ok";
+	if(isset($_POST['firstname']) && isset($_POST['quali']) && isset($_POST['mobile']) && isset($_POST['email']) && isset($_POST['developer']) && isset($_POST['ref'])){
+		$firstname=$_POST['firstname'];
+		$quali=$_POST['quali'];
+		$mobile=$_POST['mobile'];
+		$email=$_POST['email'];
+		$developer=$_POST['developer'];
+		$ref=$_POST['ref'];
+
+		$sql="INSERT INTO `applyform`(`firstname`, `quali`, `mobile`, `email`, `developer`, `ref`) VALUES ('$firstname','$quali','$mobile','$email','$developer','$ref')";
+
+		$query =mysql_query($conn,$sql);
+		if($query){
+			echo 'Data is succesfull';
+		}
+		else{
+			echo 'Error';
+		}
+
+	}
+ }
+ else{
+	echo "error";
+ }
+
+ ?>
+
+
+CodeChef 
+SnackDown 2021
